@@ -79,13 +79,13 @@ function addClickableNames(id, value, type) {
       if(/^\s+et\s+$/i.test(part) || /^,\s*d['’]après\s+une\s+histoire\s+de\s+$/i.test(part)) {
         box.append(document.createTextNode(part));
       } else {
-        const a=document.createElement('a');a.href='#';a.textContent=part.trim();a.addEventListener('click',e=>{e.preventDefault();runSearch(part.trim(),type);});box.append(a);
+        const a=document.createElement('a');a.href='#';a.textContent=part.trim();a.addEventListener('click',e=>{e.preventDefault();runSearch(part.trim(),type,true);});box.append(a);
       }
     });
     return;
   }
   const parts=text.split(/\s*[,;]\s*|\n+/).map(s=>s.trim()).filter(Boolean);
-  parts.forEach((part,index)=>{const a=document.createElement('a');a.href='#';a.textContent=part;a.addEventListener('click',e=>{e.preventDefault();runSearch(part, type);});box.append(a);if(index<parts.length-1)box.append(document.createTextNode(', '));});
+  parts.forEach((part,index)=>{const a=document.createElement('a');a.href='#';a.textContent=part;a.addEventListener('click',e=>{e.preventDefault();runSearch(part, type, true);});box.append(a);if(index<parts.length-1)box.append(document.createTextNode(', '));});
 }
 function filmUrlKey(film) {
   // Clé stable fondée sur les informations du film, indépendante de sa position dans le JSON.
@@ -133,7 +133,7 @@ function parseDurationQuery(query) {
   if(minutes) return Number(minutes[1]);
   return null;
 }
-function runSearch(query, type=null) {
+function runSearch(query, type=null, scrollToResults=false) {
   const q=clean(query);if(!q){$('results').classList.add('hidden');return;}
   const selectedType = type || $('searchCriterion').value || 'all';
   const normalized=normalizeText(q);
@@ -152,6 +152,7 @@ function runSearch(query, type=null) {
   const labels={all:'Tous les champs',title:'Titre du film',original:'Titre original',year:'Année de production',duration:'Durée',director:'Réalisateur',screenwriter:'Scénariste',cast:'Acteurs / casting',music:'Musique',support:'Support',synopsis:'Synopsis',bonus:'Bonus',genre:'Genre'};
   const label=selectedType==='duration'&&durationTarget!==null?`Durée (${durationTarget-5} à ${durationTarget+5} min)`:labels[selectedType]||'Recherche';
   renderResults(`${label} : « ${q} »`,found);setStatus(`${found.length} résultat(s) trouvé(s).`);
+  if (scrollToResults) requestAnimationFrame(() => $('results').scrollIntoView({behavior:'smooth', block:'start'}));
 }
 function updateSearchPlaceholder() {
   const type=$('searchCriterion').value;
