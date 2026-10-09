@@ -16,7 +16,7 @@ function supportList(value) {
     ['VHS', /\bVHS\b/i], ['LaserDisc', /laser[\s-]?disc/i], ['VCD', /\bVCD\b/i], ['Betamax', /\bBetamax\b/i]
   ];
   tests.forEach(([label, regex]) => { if (regex.test(text) && !found.includes(label)) found.push(label); });
-  if (!found.length && text) found.push(text);
+  // Les statistiques et filtres ne portent que sur les supports reconnus, jamais sur des noms de coffrets ou des personnes.
   return found;
 }
 function supportsFor(film) { return supportList(film.format); }
