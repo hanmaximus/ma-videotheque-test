@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catalogue personnel de films et de séries.">
+  <title>Ma Vidéothèque</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="container">
+  <nav class="nav-tools" aria-label="Navigation principale">
+    <button id="catalogButton" class="nav-button active" type="button">Catalogue</button>
+    <button id="homeButton" class="nav-button" type="button">Recherche / Fiche</button>
+  </nav>
+
+  <section id="catalogView">
+    <div class="catalog-intro">
+      <h1>Ma Vidéothèque</h1>
+      <p>Explorez votre collection et retrouvez rapidement vos films, séries et éditions.</p>
+      <div id="stats" class="stats" aria-label="Répartition par support"></div>
+    </div>
+    <div class="catalog-toolbar">
+      <div id="catalogFilter" class="catalog-filter">Tous les titres</div>
+      <button id="clearFilterButton" class="secondary-button" type="button">Effacer le filtre</button>
+    </div>
+    <div id="catalogList" class="catalog-list" aria-live="polite"></div>
+    <div class="pagination">
+      <span id="pageInfo" class="page-info"></span>
+      <button id="loadMoreButton" type="button">Charger les titres suivants</button>
+    </div>
+  </section>
+
+  <section id="homeView" class="view-hidden">
+    <header>
+      <input id="searchInput" type="search" placeholder="Rechercher un titre, réalisateur, acteur, musique, support…" autocomplete="off" aria-label="Rechercher dans la vidéothèque">
+      <button id="searchButton" type="button">Rechercher</button>
+    </header>
+    <div class="status-line"><span id="siteStatus">Chargement du catalogue…</span></div>
+    <section id="results" class="results hidden"></section>
+    <article class="film-card" id="filmCard">
+      <div class="poster" id="poster"><span>Sélectionnez un titre pour afficher sa fiche</span></div>
+      <div class="film-info">
+        <h1 id="filmTitle">Ma Vidéothèque</h1>
+        <div id="filmOriginal" class="original"></div>
+        <div id="filmTypeYear" class="meta"></div>
+        <div class="meta"><strong>Format :</strong><div id="filmSupports" class="supports"></div></div>
+        <div class="meta"><strong>Réalisateur :</strong> <span id="filmDirector">—</span></div>
+        <div class="meta"><strong>Casting :</strong> <span id="filmCast">—</span></div>
+        <div class="meta"><strong>Musique :</strong> <span id="filmMusic">—</span></div>
+        <div class="section-title">Synopsis</div><div id="filmSynopsis" class="body-copy">—</div>
+        <div class="section-title">Bonus</div><div id="filmBonus" class="body-copy">—</div>
+      </div>
+    </article>
+  </section>
+  <footer>Prototype de test — les données affichées sont des exemples.</footer>
+</div>
+</body>
+</html>
