@@ -124,26 +124,17 @@ function renderResults(label, list) {
   if(!list.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Aucun résultat.';box.append(empty);return;}
   list.slice(0,200).forEach(f=>{const item=document.createElement('div');item.className='result-item';item.tabIndex=0;item.setAttribute('role','button');const title=document.createElement('div');title.className='result-title';title.textContent=f.title||'Titre inconnu';const sub=document.createElement('div');sub.className='result-sub';sub.textContent=[f.original,f.year_original,f.duration?`${f.duration} min`:'',f.format].filter(Boolean).join(' · ');item.append(title,sub);const open=()=>showFilm(f);item.addEventListener('click',open);item.addEventListener('keydown',e=>{if(e.key==='Enter'){open();}});box.append(item);});
 }
-function parseStoredDuration(value) {
-  if (value === null || value === undefined || value === '') return NaN;
-  if (typeof value === 'number' && Number.isFinite(value)) return value;
-  const q = normalizeText(String(value)).replace(/\\s+/g, '');
-  const hoursMinutes = /^(\\d{1,2})h(\\d{1,2})$/.exec(q);
-  if (hoursMinutes && Number(hoursMinutes[2]) < 60) {
-    return Number(hoursMinutes[1]) * 60 + Number(hoursMinutes[2]);
-  }
-  const minutes = /^(\\d{1,3})(?:mn|min|minutes?)?$/.exec(q);
-  if (minutes) return Number(minutes[1]);
+function parseDurationValue(value) {
+  const q = normalizeText(value).replace(/\s+/g, '');
+  if (!q) return NaN;
+  // Accepte les durées venant du JSON sous forme de nombre ou de texte : 97, "97mn", "97 min", "1h37".
+  if (/^\d{1,3}(?:mn|min|minutes?)?$/.test(q)) return Number(q.replace(/(?:mn|min|minutes?)$/, ''));
+  const hoursMinutes = /^(\d{1,2})h(\d{1,2})$/.exec(q);
+  if (hoursMinutes && Number(hoursMinutes[2]) < 60) return Number(hoursMinutes[1]) * 60 + Number(hoursMinutes[2]);
   return NaN;
 }
 function parseDurationQuery(query) {
-  const q=normalizeText(query).replace(/\s+/g,'');
-  if (/^\d{2,3}$/.test(q)) return Number(q);
-  const hoursMinutes=/^(\d{1,2})h(\d{1,2})$/.exec(q);
-  if(hoursMinutes && Number(hoursMinutes[2])<60) return Number(hoursMinutes[1])*60+Number(hoursMinutes[2]);
-  const minutes=/^(\d{2,3})(?:mn|min|minutes?)$/.exec(q);
-  if(minutes) return Number(minutes[1]);
-  return null;
+  return parseDurationValue(query);
 }
 function runSearch(query, type=null, scrollToResults=false) {
   const q=clean(query);if(!q){$('results').classList.add('hidden');return;}
@@ -153,7 +144,7 @@ function runSearch(query, type=null, scrollToResults=false) {
   const fields={title:f=>f.title,original:f=>f.original,year:f=>String(f.year_original??''),director:f=>f.director,screenwriter:f=>f.screenwriter,cast:f=>f.cast,music:f=>f.music,support:f=>f.format,synopsis:f=>f.synopsis,bonus:f=>f.bonus,genre:f=>f.genre};
   const found=films.filter(f=>{
     if(selectedType==='duration') {
-      const duration=parseStoredDuration(f.duration);
+      const duration=parseDurationValue(f.duration);
       if(durationTarget===null) return false;
       return Number.isFinite(duration) && duration>0 && duration>=durationTarget-5 && duration<=durationTarget+5;
     }
