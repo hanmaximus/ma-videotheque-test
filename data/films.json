@@ -144,40 +144,40 @@
     "original": "Alexander - Ultimate Cut",
     "type": "Film",
     "director": "Oliver Stone",
-    "screenwriter": "",
+    "screenwriter": "Christopher Kyle, Oliver Stone et Laeta Kalogridis",
     "cast": "Colin Farrell, Angelina Jolie, Val Kilmer, Anthony Hopkins, Jared Leto, Rosario Dawson",
-    "duration": "",
+    "duration": "214mn",
     "music": "Vangelis",
     "format": "Blu-ray",
     "synopsis": "La vie et les conquêtes épiques d'Alexandre le Grand, roi de Macédoine, du bassin méditerranéen jusqu'à l'Inde.",
     "bonus": "Commentaire audio d'Oliver Stone, documentaires sur la production, le montage final",
-    "year_original": "",
+    "year_original": "2004",
     "release_fr_date": "2005-01-04",
     "image": "",
-    "country": "",
+    "country": "Allemagne,États-Unis, France,Italie, Pays-Bas, Royaume-Uni",
     "saga": "",
-    "publisher": "",
-    "genre": ""
+    "publisher": "Pathé",
+    "genre": "Biopic, Historique, Péplum"
   },
   {
     "title": "Cléopâtre",
     "original": "Cleopatra",
     "type": "Film",
     "director": "Joseph L. Mankiewicz",
-    "screenwriter": "",
+    "screenwriter": "Joseph L. Mankiewicz, Ranald MacDougall, Sidney Buchman",
     "cast": "Elizabeth Taylor, Richard Burton, Rex Harrison, Pamela Brown, George Cole, Hume Cronyn",
     "duration": "",
     "music": "Alex North",
     "format": "Blu-ray",
     "synopsis": "La reine d'Égypte Cléopâtre VII tente de préserver son royaume des ambitions de Rome grâce à ses liaisons avec Jules César puis Marc Antoine.",
     "bonus": "Documentaire 'Cleopatra: The Film That Changed Hollywood', commentaires audio, actualités d'époque",
-    "year_original": "",
-    "release_fr_date": "2013-06-24",
+    "year_original": "1963",
+    "release_fr_date": "1963-09-24",
     "image": "",
-    "country": "",
+    "country": "États-Unis",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Péplum, Film historique"
   },
   {
     "title": "Quo Vadis",
@@ -197,7 +197,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Péplum"
   },
   {
     "title": "Le sang des Templiers",
@@ -246,7 +246,7 @@
     "director": "Wolfgang Petersen",
     "screenwriter": "David Benioff",
     "cast": "Brad Pitt, Eric Bana, Orlando Bloom, Diane Kruger, Brian Cox, Sean Bean, Brendan Gleeson, Julie Christie, Vincent Regan, John Shrapnel, Peter O'Toole, Rose Byrne",
-    "duration": "196mn",
+    "duration": "196",
     "music": "James Horner",
     "format": "Blu-ray",
     "synopsis": "L'enlèvement d'Hélène par Pâris déclenche une guerre dévastatrice entre la Grèce et Troie, menée par le légendaire guerrier Achille.",
@@ -286,7 +286,7 @@
     "director": "Anthony Mann",
     "screenwriter": "Scénario : Borden Chase, d'après le roman Bend of the Snake de Bill Gulick",
     "cast": "James Stewart, Arthur Kennedy, Julie Adams, Rock Hudson, Lori Nelson, Jay C. Flippen",
-    "duration": "91mn",
+    "duration": "91",
     "music": "Hans J. Salter",
     "format": "DVD / Blu-ray",
     "synopsis": "Un ancien hors-la-loi tente de se racheter en guidant un convoi de pionniers vers l'Oregon, mais un ami convoite le ravitaillement.",
@@ -306,7 +306,7 @@
     "director": "André de Toth",
     "screenwriter": "Frank Davis et Ben Hecht, d'après une histoire de Robert L. Richards",
     "cast": "Kirk Douglas, Elsa Martinelli, Walter Matthau, Diana Douglas, Walter Abel, Lon Chaney Jr.",
-    "duration": "88mn",
+    "duration": "88",
     "music": "Franz Waxman",
     "format": "DVD / Blu-ray",
     "synopsis": "Oregon 1870. L'éclaireur Johnny Hawks, qui connaît bien la culture indienne, est envoyé auprès de Nuage Rouge, chef des Sioux, afin de lui demander l'autorisation de faire passer un convoi sur son territoire. Mais deux renégats, à la recherche d’une mine d'or, assassinent Loup Gris, un membre de la tribu.",
@@ -346,7 +346,7 @@
     "director": "Steven Hilliard Stern",
     "screenwriter": "Stanley Mann",
     "cast": "Kirk Douglas, James Coburn,Alexandra Bastedo, Graham Jarvis",
-    "duration": "98mn",
+    "duration": "98",
     "music": "Kenneth Wannberg",
     "format": "DVD",
     "synopsis": "Accusé d'un meurtre qu'il n'a pas commis, Harry Holland kidnappe une jeune actrice pour essayer de s'en sortir. Mais l'ex-shérif Starret intervient et Holland n'a pas d'autre choix que de se rendre…",
@@ -386,7 +386,7 @@
     "director": "David Miller",
     "screenwriter": "Dalton Trumbo d’après le roman d’Edward Abbey",
     "cast": "Kirk Douglas, Gena Rowlands, Walter Matthau, Michael Kane, Carroll O'Connor, William Schallert",
-    "duration": "107mn",
+    "duration": "107",
     "music": "Jerry Goldsmith",
     "format": "DVD / Blu-ray",
     "synopsis": "Un cow-boy moderne épris de liberté refuse de se plier aux exigences du monde contemporain et se fait traquer par la police.",
@@ -426,7 +426,7 @@
     "director": "King Vidor",
     "screenwriter": "Borden Chase, D. D. Beauchamp",
     "cast": "Kirk Douglas, Jeanne Crain, Claire Trevor, William Campbell, Richard Boone, Jay C. Flippen",
-    "duration": "85mn",
+    "duration": "85",
     "music": "Hans J. Salter",
     "format": "DVD / Blu-ray",
     "synopsis": "Un cow-boy nomade farouchement opposé aux barbelés prend sous son aile un jeune homme naïf dans un grand ranch.",
@@ -466,7 +466,7 @@
     "director": "Walter Hill",
     "screenwriter": "Bill Bryden, Steven Smith, Stacy Keach et James Keach",
     "cast": "David Carradine, Keith Carradine, Robert Carradine, James Keach, Stacy Keach, Dennis Quaid, Randy Quaid",
-    "duration": "99mn",
+    "duration": "99",
     "music": "Ry Cooder",
     "format": "DVD",
     "synopsis": "La vie et les exploits tragiques du célèbre hors-la-loi Jesse James et de son frère Frank après la guerre de Sécession.",
@@ -486,7 +486,7 @@
     "director": "Robert Aldrich",
     "screenwriter": "Roland Kibbee, James R. Webb d'après une histoire de Borden Chase",
     "cast": "Gary Cooper, Burt Lancaster, Denise Darcel, Cesar Romero, Sara Montiel, George Macready",
-    "duration": "94mn",
+    "duration": "94m",
     "music": "Hugo Friedhofer",
     "format": "DVD",
     "synopsis": "Pendant la révolution mexicaine, deux aventuriers américains escortent une comtesse et une cargaison d'or à Vera Cruz.",
@@ -506,7 +506,7 @@
     "director": "John Sturges",
     "screenwriter": "John Gay d'après le roman de Bill Gulick",
     "cast": "Burt Lancaster, Lee Remick, Donald Pleasence, Brian Keith, Jim Hutton, Pamela Tiffin",
-    "duration": "165mn",
+    "duration": "165",
     "music": "Elmer Bernstein",
     "format": "DVD",
     "synopsis": "Durant l'hiver 1867. Une terrible disette d'alcool menace la cité minière de Denver dans le Colorado. Chaque habitant s'imagine que l’hiver sera rude et risque d'empêcher l'arrivée d'un convoi de quarante fourgons contenant six cents barils de whisky et de Champagne. De leur côté, les Sioux guettent ledit convoi le long de la piste.",
@@ -526,7 +526,7 @@
     "director": "Sydney Pollack",
     "screenwriter": "William W. Norton",
     "cast": "Burt Lancaster, Ossie Davis, Telly Savalas",
-    "duration": "102mn",
+    "duration": "102",
     "music": "Elmer Bernstein",
     "format": "DVD",
     "synopsis": "Un trappeur tente de récupérer ses peaux de furieux voleurs auprès d'une bande de scalpeurs avec l'aide d'un esclave fugitif très instruit.",
@@ -546,7 +546,7 @@
     "director": "John Ford",
     "screenwriter": "John Lee Mahin et Martin Rackin d'après une histoire de Harold Sinclair",
     "cast": "John Wayne, William Holden, Constance Towers",
-    "duration": "115mn",
+    "duration": "115",
     "music": "David Buttolph et Stan Jones",
     "format": "DVD",
     "synopsis": "Pendant la guerre de Sécession, une brigade de cavalerie de l'Union mène un raid audacieux derrière les lignes confédérées.",
@@ -566,7 +566,7 @@
     "director": "Anthony Mann",
     "screenwriter": "Philip Yordan et Frank Burt d'après un roman de Thomas T. Flynn",
     "cast": "James Stewart, Arthur Kennedy, Donald Crisp",
-    "duration": "104mn",
+    "duration": "104",
     "music": "George Duning",
     "format": "DVD",
     "synopsis": "Un ancien officier cherche l'homme responsable de la vente d'armes aux Apaches ayant causé la mort de son frère.",
@@ -586,7 +586,7 @@
     "director": "Anthony Mann",
     "screenwriter": "Philip Yordan et Russell S. Hughes, adapté du roman The Gilded",
     "cast": "Victor Mature, Guy Madison, Robert Preston, James Whitmore, Anne Bancroft, Russell Collins",
-    "duration": "98mn",
+    "duration": "98",
     "music": "Leigh Harline",
     "format": "DVD",
     "synopsis": "Un éclaireur vétéran et un jeune lieutenant de cavalerie traquent le chef apache Ulzana et sa bande d'insurgés.",
@@ -606,7 +606,7 @@
     "director": "Delmer Daves",
     "screenwriter": "Halsted Welles d'après la nouvelle d'Elmore Leonard",
     "cast": "Glenn Ford, Van Heflin, Felicia Farr, Leora Dana, Robert Emhardt",
-    "duration": "92mn",
+    "duration": "92",
     "music": "George Duning",
     "format": "DVD",
     "synopsis": "Un fermier désargenté accepte de convoyer un dangereux chef de bande jusqu'au train de 3h10 à destination de la prison de Yuma.",
@@ -626,7 +626,7 @@
     "director": "Lawrence Kasdan",
     "screenwriter": "Lawrence Kasdan et Mark Kasdan",
     "cast": "Kevin Kline, Scott Glenn, Kevin Costner, Rosanna Arquette, John Cleese, Brian Dennehy, Jeff Goldblum, Linda Hunt, Danny Glover, Ray Baker",
-    "duration": "149mn",
+    "duration": "149",
     "music": "Bruce Broughton",
     "format": "DVD",
     "synopsis": "Quatre aventuriers itinérants s'unissent pour lutter contre un shérif corrompu et un rancher tyrannique dans la ville de Silverado.",
@@ -637,7 +637,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Chevauchée sauvage",
@@ -657,7 +657,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Brigand bien-aimé",
@@ -677,7 +677,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Grand Passage",
@@ -697,7 +697,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Tombstone",
@@ -717,7 +717,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Montagne jaune",
@@ -737,7 +737,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Pacific Express",
@@ -757,7 +757,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Vengeance aux deux visages",
@@ -777,7 +777,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Duel au soleil",
@@ -797,7 +797,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Missouri Breaks",
@@ -817,7 +817,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Professionnel",
@@ -837,7 +837,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Porte du paradis",
@@ -857,7 +857,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme de l'Ouest",
@@ -877,7 +877,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Vent de la plaine",
@@ -897,7 +897,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Little Big Man",
@@ -917,7 +917,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Alamo",
@@ -937,7 +937,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Rio Bravo",
@@ -957,7 +957,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Horde sauvage",
@@ -977,7 +977,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Pat Garrett et Billy le Kid",
@@ -997,7 +997,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Coup de feu dans la Sierra",
@@ -1017,7 +1017,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Convoi de femmes",
@@ -1037,7 +1037,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Au-delà du Missouri",
@@ -1057,7 +1057,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Collines de la potence",
@@ -1077,7 +1077,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Jeremiah Johnson",
@@ -1097,7 +1097,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Open Range",
@@ -1117,7 +1117,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Trésor du pendu",
@@ -1137,7 +1137,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Cheyennes",
@@ -1157,7 +1157,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'appat",
@@ -1177,7 +1177,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Assassinat de Jesse James par le lâche Robert Ford",
@@ -1197,7 +1197,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Ruée vers l'Ouest",
@@ -1217,7 +1217,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Colline des potences",
@@ -1237,7 +1237,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Reptile",
@@ -1257,7 +1257,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "John McCabe",
@@ -1277,7 +1277,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Rivière d'argent",
@@ -1297,7 +1297,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Piste de Santa Fe",
@@ -1317,7 +1317,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Dernière Chasse",
@@ -1337,7 +1337,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Étrange Incident",
@@ -1357,7 +1357,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "El Dorado",
@@ -1377,7 +1377,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme des vallées perdues",
@@ -1397,7 +1397,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Rio Lobo",
@@ -1417,7 +1417,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Will Penny, le solitaire",
@@ -1437,7 +1437,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Comancheros",
@@ -1457,7 +1457,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Convoi des braves",
@@ -1477,7 +1477,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Blonde et le Shérif",
@@ -1497,7 +1497,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Major Dundee",
@@ -1517,7 +1517,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Chevauchée fantastique",
@@ -1537,7 +1537,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Piste des géants",
@@ -1557,7 +1557,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Buffalo Bill",
@@ -1577,7 +1577,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Diablesse en collants roses",
@@ -1597,7 +1597,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme qui tua Liberty Valance",
@@ -1617,7 +1617,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Dernier Train pour Gun Hill",
@@ -1637,7 +1637,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Cow-boy",
@@ -1646,7 +1646,7 @@
     "director": "Delmer Daves",
     "screenwriter": "Edmund H. North, Dalton Trumbo (non crédité), d'après le roman autobiographique My Reminiscences as a cowboy publié en 1930 par Frank Harris",
     "cast": "Glenn Ford, Jack Lemmon, Anna Kashfi",
-    "duration": "92mn",
+    "duration": "92",
     "music": "George Duning",
     "format": "DVD",
     "synopsis": "",
@@ -1657,7 +1657,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Fureur apache",
@@ -1666,7 +1666,7 @@
     "director": "Robert Aldrich",
     "screenwriter": "Alan Sharp",
     "cast": "Joaquín Martínez, Burt Lancaster, Bruce Davison, \r\nJorge Luke,",
-    "duration": "105mn",
+    "duration": "105",
     "music": "Frank De Vol",
     "format": "DVD",
     "synopsis": "Un commis d'hôtel idéaliste s'associe à un convoyeur de bétail endurci pour un périlleux voyage jusqu'au Mexique.",
@@ -1677,7 +1677,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Shalako",
@@ -1697,7 +1697,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Poursuite infernale",
@@ -1717,7 +1717,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Raisins de la colère",
@@ -1737,7 +1737,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Règlement de comptes à O.K. Corral",
@@ -1757,7 +1757,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Brigade Héroïque",
@@ -1777,7 +1777,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Une Balle Signée X",
@@ -1797,7 +1797,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Duel Sans Merci",
@@ -1817,7 +1817,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Capitaine Wyatt",
@@ -1837,7 +1837,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "À L'Ombre Des Potences",
@@ -1857,7 +1857,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Grands Espaces",
@@ -1877,7 +1877,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Bataille De La Vallée Du Diable",
@@ -1897,7 +1897,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Les Compagnons De La Gloire",
@@ -1917,7 +1917,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Traître Du Texas",
@@ -1937,7 +1937,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Je Suis Un Aventurier",
@@ -1957,7 +1957,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Cible Humaine",
@@ -1977,7 +1977,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Flèche Brisée",
@@ -1997,7 +1997,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Sur La Piste Des Mohawks",
@@ -2017,7 +2017,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Jardin Du Diable",
@@ -2037,7 +2037,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme Du Nevada",
@@ -2057,7 +2057,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Aventurier Du Texas",
@@ -2077,7 +2077,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Décision À Sundown",
@@ -2097,7 +2097,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Chevauchée De La Vengeance",
@@ -2117,7 +2117,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme De L'Arizona",
@@ -2137,7 +2137,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Comanche Station",
@@ -2157,7 +2157,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Dix Hommes À Abattre",
@@ -2177,7 +2177,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Dernier Des Géants",
@@ -2197,7 +2197,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "L'Homme Aux Colts D'Or",
@@ -2217,7 +2217,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Bravados",
@@ -2237,7 +2237,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Sept Hommes À Abattre",
@@ -2257,7 +2257,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Johnny Guitare",
@@ -2277,7 +2277,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Train Sifflera Trois Fois",
@@ -2297,7 +2297,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Vallée De La Peur",
@@ -2317,7 +2317,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Rio Grande",
@@ -2337,7 +2337,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le prisonnier de la haine",
@@ -2357,7 +2357,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Souffle de la violence",
@@ -2377,7 +2377,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Winchester '73",
@@ -2397,7 +2397,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Grand McLintock",
@@ -2417,7 +2417,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Mort ou Vif",
@@ -2437,7 +2437,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Prisonnière Du Désert",
@@ -2457,7 +2457,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Le Shérif Est En Prison",
@@ -2477,7 +2477,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "Un Homme Nommé Cheval",
@@ -2497,7 +2497,7 @@
     "country": "",
     "saga": "",
     "publisher": "",
-    "genre": ""
+    "genre": "Western"
   },
   {
     "title": "La Revanche d'un homme nommé Cheval",
@@ -56264,9 +56264,9 @@
     "original": "Sin City",
     "type": "",
     "director": "Robert Rodriguez, Frank Miller, Quentin Tarantino",
-    "screenwriter": "",
+    "screenwriter": "Robert Rodriguez et Frank Miller",
     "cast": "Bruce Willis, Mickey Rourke, Jessica Alba, Clive Owen, Rosario Dawson, Benicio del Toro",
-    "duration": "",
+    "duration": "104",
     "music": "John Debney, Graeme Revell, Robert Rodriguez",
     "format": "",
     "synopsis": "Au cœur de la sombre ville de Sin City, trois histoires de vengeance, d'amour et de corruption s'entremêlent.",
@@ -56284,9 +56284,9 @@
     "original": "Renaissance (2006)",
     "type": "",
     "director": "Christian Volckman",
-    "screenwriter": "",
+    "screenwriter": "Alexandre de La Patellière et Matthieu Delaporte",
     "cast": "Daniel Craig, Romola Garai, Ian Holm, Jonathan Pryce, Catherine McCormack, Kevork Malikyan",
-    "duration": "",
+    "duration": "124",
     "music": "Nicholas Dodd",
     "format": "",
     "synopsis": "Dans un Paris futuriste en 2054, un policier enquête sur la disparition mystérieuse d'une jeune chercheuse travaillant pour une mégacorporation.",
