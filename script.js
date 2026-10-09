@@ -94,23 +94,32 @@ function parseDurationQuery(query) {
   if(minutes) return Number(minutes[1]);
   return null;
 }
-function runSearch(query, type='all') {
+function runSearch(query, type=null) {
   const q=clean(query);if(!q){$('results').classList.add('hidden');return;}
+  const selectedType = type || $('searchCriterion').value || 'all';
   const normalized=normalizeText(q);
-  const durationTarget=type==='all'?parseDurationQuery(q):null;
+  const durationTarget=selectedType==='duration'?parseDurationQuery(q):null;
+  const fields={title:f=>f.title,original:f=>f.original,year:f=>String(f.year_original??''),director:f=>f.director,screenwriter:f=>f.screenwriter,cast:f=>f.cast,music:f=>f.music,support:f=>f.format,synopsis:f=>f.synopsis,bonus:f=>f.bonus,genre:f=>f.genre};
   const found=films.filter(f=>{
-    const fields={director:f.director,screenwriter:f.screenwriter,genre:f.genre,cast:f.cast,music:f.music,support:f.format};
-    if(durationTarget!==null) {
+    if(selectedType==='duration') {
       const duration=Number(f.duration);
+      if(durationTarget===null) return false;
       return Number.isFinite(duration) && duration>0 && duration>=durationTarget-5 && duration<=durationTarget+5;
     }
-    if(type==='all') return searchable(f).includes(normalized);
-    if(type==='support') return supportsFor(f).some(s=>normalizeText(s).includes(normalized)) || normalizeText(f.format).includes(normalized);
-    return normalizeText(fields[type]||'').includes(normalized);
+    if(selectedType==='all') return searchable(f).includes(normalized);
+    if(selectedType==='support') return supportsFor(f).some(s=>normalizeText(s).includes(normalized)) || normalizeText(f.format).includes(normalized);
+    return normalizeText(fields[selectedType]?.(f) || '').includes(normalized);
   });
-  const label=durationTarget!==null?`Durée (${durationTarget-5} à ${durationTarget+5} min)`:type==='all'?'Recherche':type==='director'?'Réalisateur':type==='screenwriter'?'Scénariste':type==='genre'?'Genre':type==='cast'?'Acteur':type==='music'?'Musique':'Support';
+  const labels={all:'Tous les champs',title:'Titre du film',original:'Titre original',year:'Année de production',duration:'Durée',director:'Réalisateur',screenwriter:'Scénariste',cast:'Acteurs / casting',music:'Musique',support:'Support',synopsis:'Synopsis',bonus:'Bonus',genre:'Genre'};
+  const label=selectedType==='duration'&&durationTarget!==null?`Durée (${durationTarget-5} à ${durationTarget+5} min)`:labels[selectedType]||'Recherche';
   renderResults(`${label} : « ${q} »`,found);setStatus(`${found.length} résultat(s) trouvé(s).`);
 }
+function updateSearchPlaceholder() {
+  const type=$('searchCriterion').value;
+  const placeholders={title:'Ex. La Rivière de nos amours',original:'Ex. The Indian Fighter',year:'Ex. 1955',duration:'Ex. 88, 1h28 ou 88 min',director:'Nom du réalisateur',screenwriter:'Nom du scénariste',cast:'Nom d’un acteur',genre:'Ex. Western',music:'Nom du compositeur',support:'Ex. Blu-ray, DVD, 4K UHD',synopsis:'Mot ou expression du synopsis',bonus:'Mot ou expression des bonus',all:'Recherche dans tous les champs'};
+  $('searchInput').placeholder=placeholders[type]||'Saisir un terme…';
+}
+
 async function init() {
   try {
     const response=await fetch('data/films.json');if(!response.ok)throw new Error(`Erreur HTTP ${response.status}`);
@@ -125,6 +134,8 @@ $('catalogButton').addEventListener('click',()=>showView('catalog'));
 $('homeButton').addEventListener('click',()=>showView('home'));
 $('searchButton').addEventListener('click',()=>runSearch($('searchInput').value));
 $('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runSearch($('searchInput').value);});
+$('searchCriterion').addEventListener('change',updateSearchPlaceholder);
+updateSearchPlaceholder();
 $('loadMoreButton').addEventListener('click',()=>{visibleCount+=PAGE_SIZE;renderCatalog();});
 $('clearFilterButton').addEventListener('click',()=>{activeSupport='';visibleCount=PAGE_SIZE;renderStats();renderCatalog();});
 init();
