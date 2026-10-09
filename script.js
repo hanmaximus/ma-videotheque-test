@@ -76,24 +76,40 @@ function showFilm(film) {
   $('filmTypeYear').textContent=details.join(' · ')||'—';
   const supports=$('filmSupports');supports.replaceChildren();const supportNames=supportsFor(film);
   supportNames.forEach(name=>{const b=document.createElement('button');b.type='button';b.className='support-badge';b.textContent=name;b.title=`Afficher les titres en ${name}`;b.addEventListener('click',()=>{activeSupport=name;visibleCount=PAGE_SIZE;renderStats();renderCatalog();showView('catalog');});supports.append(b);});
-  addClickableNames('filmDirector',film.director,'director');addClickableNames('filmCast',film.cast,'cast');addClickableNames('filmMusic',film.music,'music');$('filmSynopsis').textContent=film.synopsis||'—';$('filmBonus').textContent=film.bonus||'—';
+  addClickableNames('filmDirector',film.director,'director');addClickableNames('filmScreenwriter',film.screenwriter,'screenwriter');addClickableNames('filmGenre',film.genre,'genre');addClickableNames('filmCast',film.cast,'cast');addClickableNames('filmMusic',film.music,'music');$('filmSynopsis').textContent=film.synopsis||'—';$('filmBonus').textContent=film.bonus||'—';
   const poster=$('poster');poster.replaceChildren();if(film.image){const img=document.createElement('img');img.src=film.image;img.alt=`Affiche de ${film.title||'ce titre'}`;img.loading='lazy';img.onerror=()=>{poster.replaceChildren();poster.textContent='Affiche indisponible';};poster.append(img);}else{poster.textContent='Affiche à ajouter';}
   setStatus('Fiche affichée depuis le catalogue local.');window.scrollTo({top:0,behavior:'smooth'});
 }
 function renderResults(label, list) {
   const box=$('results');box.replaceChildren();box.classList.remove('hidden');const head=document.createElement('div');head.className='results-head';head.textContent=`${label} — ${list.length} résultat${list.length===1?'':'s'}`;box.append(head);
   if(!list.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Aucun résultat.';box.append(empty);return;}
-  list.slice(0,200).forEach(f=>{const item=document.createElement('div');item.className='result-item';item.tabIndex=0;item.setAttribute('role','button');const title=document.createElement('div');title.className='result-title';title.textContent=f.title||'Titre inconnu';const sub=document.createElement('div');sub.className='result-sub';sub.textContent=[f.original,f.year_original,f.format].filter(Boolean).join(' · ');item.append(title,sub);const open=()=>showFilm(f);item.addEventListener('click',open);item.addEventListener('keydown',e=>{if(e.key==='Enter'){open();}});box.append(item);});
+  list.slice(0,200).forEach(f=>{const item=document.createElement('div');item.className='result-item';item.tabIndex=0;item.setAttribute('role','button');const title=document.createElement('div');title.className='result-title';title.textContent=f.title||'Titre inconnu';const sub=document.createElement('div');sub.className='result-sub';sub.textContent=[f.original,f.year_original,f.duration?`${f.duration} min`:'',f.format].filter(Boolean).join(' · ');item.append(title,sub);const open=()=>showFilm(f);item.addEventListener('click',open);item.addEventListener('keydown',e=>{if(e.key==='Enter'){open();}});box.append(item);});
+}
+function parseDurationQuery(query) {
+  const q=normalizeText(query).replace(/\s+/g,'');
+  if (/^\d{2,3}$/.test(q)) return Number(q);
+  const hoursMinutes=/^(\d{1,2})h(\d{1,2})$/.exec(q);
+  if(hoursMinutes && Number(hoursMinutes[2])<60) return Number(hoursMinutes[1])*60+Number(hoursMinutes[2]);
+  const minutes=/^(\d{2,3})(?:mn|min|minutes?)$/.exec(q);
+  if(minutes) return Number(minutes[1]);
+  return null;
 }
 function runSearch(query, type='all') {
   const q=clean(query);if(!q){$('results').classList.add('hidden');return;}
-  const normalized=normalizeText(q);const found=films.filter(f=>{
-    const fields={director:f.director,cast:f.cast,music:f.music,support:f.format};
+  const normalized=normalizeText(q);
+  const durationTarget=type==='all'?parseDurationQuery(q):null;
+  const found=films.filter(f=>{
+    const fields={director:f.director,screenwriter:f.screenwriter,genre:f.genre,cast:f.cast,music:f.music,support:f.format};
+    if(durationTarget!==null) {
+      const duration=Number(f.duration);
+      return Number.isFinite(duration) && duration>0 && duration>=durationTarget-5 && duration<=durationTarget+5;
+    }
     if(type==='all') return searchable(f).includes(normalized);
     if(type==='support') return supportsFor(f).some(s=>normalizeText(s).includes(normalized)) || normalizeText(f.format).includes(normalized);
     return normalizeText(fields[type]||'').includes(normalized);
   });
-  renderResults((type==='all'?'Recherche':type==='director'?'Réalisateur':type==='cast'?'Acteur':type==='music'?'Musique':'Support')+` : « ${q} »`,found);setStatus(`${found.length} résultat(s) trouvé(s).`);
+  const label=durationTarget!==null?`Durée (${durationTarget-5} à ${durationTarget+5} min)`:type==='all'?'Recherche':type==='director'?'Réalisateur':type==='screenwriter'?'Scénariste':type==='genre'?'Genre':type==='cast'?'Acteur':type==='music'?'Musique':'Support';
+  renderResults(`${label} : « ${q} »`,found);setStatus(`${found.length} résultat(s) trouvé(s).`);
 }
 async function init() {
   try {
