@@ -36,7 +36,9 @@ function showView(which) {
   $('homeButton').classList.toggle('active', !catalog);
 }
 function getFilteredFilms() {
-  return activeSupport ? films.filter(f => supportsFor(f).includes(activeSupport)) : films;
+  const filtered = activeSupport ? films.filter(f => supportsFor(f).includes(activeSupport)) : films;
+  // Le catalogue est trié par titre français, sans modifier l'ordre des données d'origine.
+  return [...filtered].sort((a, b) => clean(a.title).localeCompare(clean(b.title), 'fr', { sensitivity: 'base', numeric: true }));
 }
 function renderStats() {
   const box = $('stats'); box.replaceChildren();
