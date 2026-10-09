@@ -66,8 +66,23 @@ function renderCatalog() {
   $('loadMoreButton').textContent=visibleCount>=list.length?'Fin du catalogue':'Charger les titres suivants';
 }
 function addClickableNames(id, value, type) {
-  const box=$(id);box.replaceChildren();const parts=clean(value).split(/\s*[,;]\s*|\n+/).map(s=>s.trim()).filter(Boolean);
-  if(!parts.length){box.textContent='—';return;}
+  const box=$(id);box.replaceChildren();
+  const text=clean(value);
+  if(!text){box.textContent='—';return;}
+  // Pour les scénaristes, ne rendre cliquables que les noms, pas les mots de liaison.
+  if(type==='screenwriter') {
+    const parts=text.split(/(\s+et\s+|,\s*d['’]après\s+une\s+histoire\s+de\s+)/i);
+    parts.forEach(part=>{
+      if(!part) return;
+      if(/^\s+et\s+$/i.test(part) || /^,\s*d['’]après\s+une\s+histoire\s+de\s+$/i.test(part)) {
+        box.append(document.createTextNode(part));
+      } else {
+        const a=document.createElement('a');a.href='#';a.textContent=part.trim();a.addEventListener('click',e=>{e.preventDefault();runSearch(part.trim(),type);});box.append(a);
+      }
+    });
+    return;
+  }
+  const parts=text.split(/\s*[,;]\s*|\n+/).map(s=>s.trim()).filter(Boolean);
   parts.forEach((part,index)=>{const a=document.createElement('a');a.href='#';a.textContent=part;a.addEventListener('click',e=>{e.preventDefault();runSearch(part, type);});box.append(a);if(index<parts.length-1)box.append(document.createTextNode(', '));});
 }
 function showFilm(film) {
