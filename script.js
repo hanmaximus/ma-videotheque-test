@@ -85,14 +85,36 @@ function addClickableNames(id, value, type) {
   const parts=text.split(/\s*[,;]\s*|\n+/).map(s=>s.trim()).filter(Boolean);
   parts.forEach((part,index)=>{const a=document.createElement('a');a.href='#';a.textContent=part;a.addEventListener('click',e=>{e.preventDefault();runSearch(part, type);});box.append(a);if(index<parts.length-1)box.append(document.createTextNode(', '));});
 }
-function showFilm(film) {
-  currentFilm=film;showView('home');$('results').classList.add('hidden');$('filmTitle').textContent=film.title||'Titre inconnu';$('filmOriginal').textContent=film.original||'';
+function filmUrlKey(film) {
+  // Clé stable fondée sur les informations du film, indépendante de sa position dans le JSON.
+  return JSON.stringify([clean(film.title), clean(film.original), clean(film.year_original), clean(film.release_fr_date)]);
+}
+function setFilmHash(film) {
+  const hash = '#film=' + encodeURIComponent(filmUrlKey(film));
+  if (window.location.hash !== hash) window.location.hash = hash;
+}
+function restoreFilmFromHash() {
+  const match = /^#film=(.*)$/.exec(window.location.hash);
+  if (!match || !films.length) return false;
+  try {
+    const key = decodeURIComponent(match[1]);
+    const film = films.find(item => filmUrlKey(item) === key);
+    if (film) { showFilm(film, false); return true; }
+  } catch (error) {
+    console.warn('Identifiant de fiche invalide dans l’adresse.', error);
+  }
+  return false;
+}
+function showFilm(film, updateAddress = true) {
+  currentFilm=film;
+  if (updateAddress) setFilmHash(film);
+  showView('home');$('results').classList.add('hidden');$('filmTitle').textContent=film.title||'Titre inconnu';$('filmOriginal').textContent=film.original||'';
   const details=[film.type, film.year_original ? `Année originale / production : ${film.year_original}` : '', film.release_fr_date ? `Sortie française : ${displayFrenchDate(film.release_fr_date)}` : '', film.duration ? `${film.duration} min` : ''].filter(Boolean);
   $('filmTypeYear').textContent=details.join(' · ')||'—';
   const supports=$('filmSupports');supports.replaceChildren();const supportNames=supportsFor(film);
   supportNames.forEach(name=>{const b=document.createElement('button');b.type='button';b.className='support-badge';b.textContent=name;b.title=`Afficher les titres en ${name}`;b.addEventListener('click',()=>{activeSupport=name;visibleCount=PAGE_SIZE;renderStats();renderCatalog();showView('catalog');});supports.append(b);});
   addClickableNames('filmDirector',film.director,'director');addClickableNames('filmScreenwriter',film.screenwriter,'screenwriter');addClickableNames('filmGenre',film.genre,'genre');addClickableNames('filmCast',film.cast,'cast');addClickableNames('filmMusic',film.music,'music');$('filmSynopsis').textContent=film.synopsis||'—';$('filmBonus').textContent=film.bonus||'—';
-  const poster=$('poster');poster.replaceChildren();if(film.image){const img=document.createElement('img');img.src=film.image;img.alt=`Affiche de ${film.title||'ce titre'}`;img.loading='lazy';img.onerror=()=>{poster.replaceChildren();poster.textContent='Affiche indisponible';};poster.append(img);}else{poster.textContent='Affiche à ajouter';}
+  const poster=$('poster');poster.replaceChildren();if(film.image){const img=document.createElement('img');const imageValue=clean(film.image);img.src=/^(?:https?:)?\/\//i.test(imageValue)||imageValue.startsWith('/')?imageValue:(imageValue.startsWith('images/')?imageValue:`images/${imageValue}`);img.alt=`Affiche de ${film.title||'ce titre'}`;img.loading='lazy';img.onerror=()=>{poster.replaceChildren();poster.textContent='Affiche indisponible';};poster.append(img);}else{poster.textContent='Affiche à ajouter';}
   setStatus('Fiche affichée depuis le catalogue local.');window.scrollTo({top:0,behavior:'smooth'});
 }
 function renderResults(label, list) {
@@ -141,11 +163,23 @@ async function init() {
     const data=await response.json();if(!Array.isArray(data))throw new Error('Le fichier JSON doit contenir une liste de titres.');
     films=data.map((f,i)=>({...f,_internalId:`title-${i}`}));
     renderStats();renderCatalog();setStatus(`${films.length} titres chargés depuis le fichier de test Excel.`);
+    restoreFilmFromHash();
   } catch(error) {
     console.error(error);setStatus('Impossible de charger data/films.json. Vérifiez que les fichiers ont bien été ajoutés au dépôt GitHub.');$('catalogList').textContent='Le catalogue ne peut pas être chargé. Vérifiez le fichier data/films.json.';
   }
 }
-$('catalogButton').addEventListener('click',()=>showView('catalog'));
+$('catalogButton').addEventListener('click',()=>{
+  if (window.location.hash.startsWith('#film=')) history.replaceState(null, '', window.location.pathname + window.location.search);
+  showView('catalog');
+});
+window.addEventListener('hashchange', () => {
+  if (!window.location.hash.startsWith('#film=')) {
+    currentFilm = null;
+    showView('catalog');
+    return;
+  }
+  restoreFilmFromHash();
+});
 $('homeButton').addEventListener('click',()=>showView('home'));
 $('searchButton').addEventListener('click',()=>runSearch($('searchInput').value));
 $('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runSearch($('searchInput').value);});
