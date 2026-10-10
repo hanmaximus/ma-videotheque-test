@@ -6,3 +6,6 @@ header{display:flex;gap:10px;align-items:end;margin-bottom:8px}.search-row{displ
 @media(max-width:760px){.container{padding:16px 12px 32px}.search-row{grid-template-columns:minmax(0,3fr) minmax(0,6fr) minmax(100px,1fr)}.search-criterion-wrap{grid-column:auto}.search-query-wrap{grid-column:auto}.search-row #searchButton{grid-column:auto;width:100%}.film-card{flex-direction:column}.poster{width:100%;min-width:0;min-height:180px;height:260px}.film-info{padding:20px 18px}header{flex-wrap:wrap}.catalog-item{grid-template-columns:1fr}.catalog-format{text-align:left}.stats{gap:7px}.stat-card{min-width:calc(50% - 4px);flex:1}.catalog-intro{padding:18px}.catalog-intro h1{font-size:26px}#filmTitle{font-size:26px}}
 
 @media(max-width:520px){.search-row{grid-template-columns:1fr}.search-criterion-wrap,.search-query-wrap,.search-row #searchButton{grid-column:1;width:100%}}
+
+/* Liens de texte, notamment la saga dans la fiche film */
+.text-link{padding:0;border:0;border-radius:0;background:transparent;color:var(--accent-color);font:inherit;font-weight:inherit;text-align:left;text-decoration:none;cursor:pointer;display:inline;} .text-link:hover{text-decoration:underline;}
