@@ -71,17 +71,25 @@ function addClickableNames(id, value, type) {
   const box=$(id);box.replaceChildren();
   const text=clean(value);
   if(!text){box.textContent='—';return;}
-  // Pour les scénaristes, ne rendre cliquables que les noms, pas les mots de liaison.
+  // Pour les scénaristes, les noms restent cliquables, mais pas les mots de liaison
+  // ni les mentions de source (« d'après le roman de… », etc.).
   if(type==='screenwriter') {
-    const parts=text.split(/(\s+et\s+|,\s*d['’]après\s+une\s+histoire\s+de\s+)/i);
-    parts.forEach(part=>{
-      if(!part) return;
-      if(/^\s+et\s+$/i.test(part) || /^,\s*d['’]après\s+une\s+histoire\s+de\s+$/i.test(part)) {
-        box.append(document.createTextNode(part));
-      } else {
-        const a=document.createElement('a');a.href='#';a.textContent=part.trim();a.addEventListener('click',e=>{e.preventDefault();runSearch(part.trim(),type,true);});box.append(a);
-      }
-    });
+    // split() avec un groupe capturant ne conserve que la première occurrence : utiliser matchAll pour toutes.
+    const connector = /\s+et\s+|,?\s*d['’]après\s+(?:le\s+roman\s+autobiographique\s+My\s+Reminiscences\s+as\s+a\s+cowboy\s+publié\s+en\s+1930\s+par|le\s+roman\s+(?:de|d['’])|l['’]œuvre\s+(?:de|d['’])|une\s+histoire\s+(?:de|d['’])|la\s+nouvelle\s+(?:de|d['’]))/ig;
+    let cursor=0, match;
+    const appendName = part => {
+      const name=part.trim();
+      if(!name) return;
+      const a=document.createElement('a');a.href='#';a.textContent=name;
+      a.addEventListener('click',e=>{e.preventDefault();runSearch(name,type,true);});
+      box.append(a);
+    };
+    while((match=connector.exec(text))!==null) {
+      appendName(text.slice(cursor,match.index));
+      box.append(document.createTextNode(match[0]));
+      cursor=match.index+match[0].length;
+    }
+    appendName(text.slice(cursor));
     return;
   }
   const parts=text.split(/\s*[,;]\s*|\n+/).map(s=>s.trim()).filter(Boolean);
@@ -115,7 +123,7 @@ function showFilm(film, updateAddress = true) {
   $('filmTypeYear').textContent=details.join(' · ')||'—';
   const supports=$('filmSupports');supports.replaceChildren();const supportNames=supportsFor(film);
   supportNames.forEach(name=>{const b=document.createElement('button');b.type='button';b.className='support-badge';b.textContent=name;b.title=`Afficher les titres en ${name}`;b.addEventListener('click',()=>{activeSupport=name;visibleCount=PAGE_SIZE;renderStats();renderCatalog();showView('catalog');});supports.append(b);});
-  addClickableNames('filmDirector',film.director,'director');addClickableNames('filmScreenwriter',film.screenwriter,'screenwriter');addClickableNames('filmGenre',film.genre,'genre');addClickableNames('filmCast',film.cast,'cast');addClickableNames('filmMusic',film.music,'music');$('filmSynopsis').textContent=film.synopsis||'—';$('filmBonus').textContent=film.bonus||'—';
+  addClickableNames('filmDirector',film.director,'director');addClickableNames('filmScreenwriter',film.screenwriter,'screenwriter');addClickableNames('filmGenre',film.genre,'genre');addClickableNames('filmCast',film.cast,'cast');addClickableNames('filmMusic',film.music,'music');$('filmCountry').textContent=film.country||'—';$('filmSaga').textContent=film.saga||'—';$('filmSynopsis').textContent=film.synopsis||'—';$('filmBonus').textContent=film.bonus||'—';
   const poster=$('poster');poster.replaceChildren();if(film.image){const img=document.createElement('img');const imageValue=clean(film.image);img.src=/^(?:https?:)?\/\//i.test(imageValue)||imageValue.startsWith('/')?imageValue:(imageValue.startsWith('images/')?imageValue:`images/${imageValue}`);img.alt=`Affiche de ${film.title||'ce titre'}`;img.loading='lazy';img.onerror=()=>{poster.replaceChildren();poster.textContent='Affiche indisponible';};poster.append(img);}else{poster.textContent='Affiche à ajouter';}
   setStatus('Fiche affichée depuis le catalogue local.');window.scrollTo({top:0,behavior:'smooth'});
 }
