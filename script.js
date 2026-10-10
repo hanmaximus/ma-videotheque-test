@@ -69,7 +69,7 @@ function renderCatalog() {
 }
 function addClickableNames(id, value, type) {
   const box=$(id);box.replaceChildren();
-  const text=clean(value);
+  let text=clean(value);
   if(!text){box.textContent='—';return;}
   // Pour les scénaristes, les noms restent cliquables, mais pas les mots de liaison
   // ni les mentions de source (« d'après le roman de… », etc.).
@@ -86,13 +86,19 @@ function addClickableNames(id, value, type) {
     };
     while((match=connector.exec(text))!==null) {
       appendName(text.slice(cursor,match.index));
-      box.append(document.createTextNode(match[0]));
+      // Conserve la formule telle quelle, mais ajoute l'espace AVANT d'afficher le nom.
+      // On vérifie explicitement que la formule se termine par « de » (et non par « d' »).
+      let connectorText = match[0];
       cursor=match.index+match[0].length;
-      // Garantit une séparation entre la mention (« d'après le roman de »…) et le nom,
-      // même si la donnée source a été saisie sans espace après la formule.
-      if (/d['’]après/i.test(match[0]) && !/d['’]$/.test(match[0]) && cursor < text.length && !/\s/.test(text[cursor])) {
-        box.append(document.createTextNode(' '));
+      // Le nom suivant est ensuite passé à appendName(), qui fait trim() :
+      // il faut donc mettre l'espace dans le texte du connecteur, pas dans le nom.
+      const isFullSourcePhrase = /d['’]après\s+(?:le\s+roman|l['’]œuvre|une\s+histoire|la\s+nouvelle)\s+de$/i.test(connectorText.trim());
+      if (isFullSourcePhrase) {
+        // Consomme les espaces éventuelles déjà présentes pour n'en afficher qu'une.
+        while (cursor < text.length && /\s/.test(text[cursor])) cursor++;
+        connectorText = connectorText.replace(/\s*$/, '') + ' ';
       }
+      box.append(document.createTextNode(connectorText));
     }
     appendName(text.slice(cursor));
     return;
