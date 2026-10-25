@@ -78,7 +78,7 @@ function addClickableNames(id, value, type) {
   // ni les mentions de source (« d'après le roman de… », etc.).
   if(type==='screenwriter') {
     // split() avec un groupe capturant ne conserve que la première occurrence : utiliser matchAll pour toutes.
-    const connector = /\s+et\s+|,?\s*d['’]après\s+(?:le\s+roman\s+autobiographique\s+My\s+Reminiscences\s+as\s+a\s+cowboy\s+publié\s+en\s+1930\s+par|le\s+roman\s+(?:de|d['’])|l['’]œuvre\s+(?:de|d['’])|une\s+histoire\s+(?:de|d['’])|la\s+nouvelle\s+(?:de|d['’]))/ig;
+    const connector = /\s+et\s+|,?\s*d['’]après\s+(?:le\s+roman\s+autobiographique\s+My\s+Reminiscences\s+as\s+a\s+cowboy\s+publié\s+en\s+1930\s+par|le\s+roman\s+(?:de|d['’])|le\s+livre\s+(?:de|d['’])|le\s+manga\s+(?:de|d['’])|l['’]œuvre\s+(?:de|d['’])|une\s+histoire\s+originale\s+(?:de|d['’])|une\s+histoire\s+(?:de|d['’])|la\s+nouvelle\s+(?:de|d['’]))/ig;
     let cursor=0, match;
     const appendName = part => {
       const name=part.trim();
@@ -95,7 +95,7 @@ function addClickableNames(id, value, type) {
       cursor=match.index+match[0].length;
       // Le nom suivant est ensuite passé à appendName(), qui fait trim() :
       // il faut donc mettre l'espace dans le texte du connecteur, pas dans le nom.
-      const isFullSourcePhrase = /d['’]après\s+(?:le\s+roman|l['’]œuvre|une\s+histoire|la\s+nouvelle)\s+de$/i.test(connectorText.trim());
+      const isFullSourcePhrase = /d['’]après\s+(?:le\s+roman|le\s+livre|le\s+manga|l['’]œuvre|une\s+histoire(?:\s+originale)?|la\s+nouvelle)\s+de$/i.test(connectorText.trim());
       if (isFullSourcePhrase) {
         // Consomme les espaces éventuelles déjà présentes pour n'en afficher qu'une.
         while (cursor < text.length && /\s/.test(text[cursor])) cursor++;
