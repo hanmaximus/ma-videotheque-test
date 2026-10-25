@@ -60,6 +60,11 @@
     </header>
     <div class="status-line"><span id="siteStatus">Chargement du catalogue…</span></div>
     <section id="results" class="results hidden"></section>
+    <div id="filmNavigation" class="film-navigation hidden" aria-label="Navigation entre les fiches">
+      <button id="previousFilmButton" class="secondary-button" type="button">← Précédent</button>
+      <span id="filmNavigationInfo" class="film-navigation-info" aria-live="polite"></span>
+      <button id="nextFilmButton" class="secondary-button" type="button">Suivant →</button>
+    </div>
     <article class="film-card" id="filmCard">
       <div class="poster" id="poster"><span>Sélectionnez un titre pour afficher sa fiche</span></div>
       <div class="film-info">
@@ -72,8 +77,6 @@
         <div class="meta"><strong>Genre :</strong> <span id="filmGenre">—</span></div>
         <div class="meta"><strong>Casting :</strong> <span id="filmCast">—</span></div>
         <div class="meta"><strong>Musique :</strong> <span id="filmMusic">—</span></div>
-        <div class="meta"><strong>Pays :</strong> <span id="filmCountry">—</span></div>
-        <div class="meta"><strong>Saga :</strong> <span id="filmSaga">—</span></div>
         <div class="section-title">Synopsis</div><div id="filmSynopsis" class="body-copy">—</div>
         <div class="section-title">Bonus</div><div id="filmBonus" class="body-copy">—</div>
       </div>

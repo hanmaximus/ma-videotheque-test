@@ -7,5 +7,6 @@ header{display:flex;gap:10px;align-items:end;margin-bottom:8px}.search-row{displ
 
 @media(max-width:520px){.search-row{grid-template-columns:1fr}.search-criterion-wrap,.search-query-wrap,.search-row #searchButton{grid-column:1;width:100%}}
 
-/* Liens de texte, notamment la saga dans la fiche film */
-.text-link{padding:0;border:0;border-radius:0;background:transparent;color:var(--accent-color);font:inherit;font-weight:inherit;text-align:left;text-decoration:none;cursor:pointer;display:inline;} .text-link:hover{text-decoration:underline;}
+/* Navigation entre les fiches : reprend les boutons et couleurs existants. */
+.film-navigation{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 14px;padding:12px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px}.film-navigation-info{flex:1;text-align:center;color:var(--muted);font-size:13px}.film-navigation .secondary-button{min-width:130px}
+@media(max-width:520px){.film-navigation{gap:8px}.film-navigation .secondary-button{min-width:0;flex:1;padding:10px 8px}.film-navigation-info{order:-1;flex-basis:100%}}
