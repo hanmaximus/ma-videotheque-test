@@ -11,8 +11,9 @@
 <body>
 <div class="container">
   <nav class="nav-tools" aria-label="Navigation principale">
-    <button id="catalogButton" class="nav-button active" type="button">Catalogue</button>
+    <button id="catalogButton" class="nav-button active" type="button">Catalogue par liste</button>
     <button id="homeButton" class="nav-button" type="button">Recherche / Fiche</button>
+    <button id="posterCatalogButton" class="nav-button" type="button">Catalogue par affiches</button>
   </nav>
 
   <section id="catalogView">
@@ -26,6 +27,7 @@
       <button id="clearFilterButton" class="secondary-button" type="button">Effacer le filtre</button>
     </div>
     <div id="catalogList" class="catalog-list" aria-live="polite"></div>
+    <div id="catalogPosterGrid" class="catalog-poster-grid hidden" aria-label="Catalogue par affiches" aria-live="polite"></div>
     <div class="pagination">
       <span id="pageInfo" class="page-info"></span>
       <button id="loadMoreButton" type="button">Charger les titres suivants</button>

@@ -6,6 +6,7 @@ let visibleCount = PAGE_SIZE;
 let currentFilm = null;
 let navigationFilms = [];
 let navigationMode = 'catalog';
+let catalogPresentation = 'list';
 let searchNavigationFilms = [];
 const $ = id => document.getElementById(id);
 const clean = value => String(value ?? '').trim();
@@ -35,8 +36,11 @@ function showView(which) {
   const catalog = which === 'catalog';
   $('catalogView').classList.toggle('view-hidden', !catalog);
   $('homeView').classList.toggle('view-hidden', catalog);
-  $('catalogButton').classList.toggle('active', catalog);
+  $('catalogButton').classList.toggle('active', catalog && catalogPresentation === 'list');
+  $('posterCatalogButton').classList.toggle('active', catalog && catalogPresentation === 'posters');
   $('homeButton').classList.toggle('active', !catalog);
+  $('catalogList').classList.toggle('hidden', catalogPresentation !== 'list');
+  $('catalogPosterGrid').classList.toggle('hidden', catalogPresentation !== 'posters');
 }
 function getFilteredFilms() {
   const filtered = activeSupport ? films.filter(f => supportsFor(f).includes(activeSupport)) : films;
@@ -55,20 +59,65 @@ function renderStats() {
     button.append(number,label); button.addEventListener('click',()=>{activeSupport=item.name==='Tous les titres'?'':item.name;visibleCount=PAGE_SIZE;renderCatalog();renderStats();}); box.append(button);
   });
 }
+function imageSourceFor(film) {
+  const imageValue = clean(film.image);
+  if (!imageValue) return '';
+  return /^(?:https?:)?\/\//i.test(imageValue) || imageValue.startsWith('/')
+    ? imageValue
+    : (imageValue.startsWith('images/') ? imageValue : `images/${imageValue}`);
+}
+function openFilmFromCatalog(film) { showFilm(film, true, 'catalog'); }
 function renderCatalog() {
-  const list = getFilteredFilms(); const visible = list.slice(0, visibleCount); const box=$('catalogList'); box.replaceChildren();
+  const list = getFilteredFilms();
+  const visible = list.slice(0, visibleCount);
+  const box = $('catalogList');
+  const posterBox = $('catalogPosterGrid');
+  box.replaceChildren();
+  posterBox.replaceChildren();
   $('catalogFilter').textContent = activeSupport ? `Support : ${activeSupport}` : 'Tous les titres';
-  if (!visible.length) { const empty=document.createElement('div');empty.className='empty';empty.textContent='Aucun titre pour ce filtre.';box.append(empty); }
+  if (!visible.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'Aucun titre pour ce filtre.';
+    box.append(empty);
+    posterBox.append(empty.cloneNode(true));
+  }
   visible.forEach(film => {
-    const item=document.createElement('article'); item.className='catalog-item'; item.tabIndex=0; item.setAttribute('role','button');
-    const titleWrap=document.createElement('div'); const title=document.createElement('div');title.className='catalog-title';title.textContent=film.title||'Titre inconnu';titleWrap.append(title);
-    if(film.original){const original=document.createElement('div');original.className='catalog-original';original.textContent=film.original;titleWrap.append(original);}
-    const format=document.createElement('div');format.className='catalog-format';format.textContent=supportsFor(film).join(' · ')||'—';item.append(titleWrap,format);
-    const open=()=>showFilm(film, true, 'catalog');item.addEventListener('click',open);item.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});box.append(item);
+    // Présentation en liste : conservée, avec les mêmes éléments et interactions.
+    const item = document.createElement('article');
+    item.className = 'catalog-item'; item.tabIndex = 0; item.setAttribute('role', 'button');
+    const titleWrap = document.createElement('div');
+    const title = document.createElement('div'); title.className = 'catalog-title'; title.textContent = film.title || 'Titre inconnu'; titleWrap.append(title);
+    if (film.original) { const original = document.createElement('div'); original.className = 'catalog-original'; original.textContent = film.original; titleWrap.append(original); }
+    const format = document.createElement('div'); format.className = 'catalog-format'; format.textContent = supportsFor(film).join(' · ') || '—';
+    item.append(titleWrap, format);
+    item.addEventListener('click', () => openFilmFromCatalog(film));
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFilmFromCatalog(film); } });
+    box.append(item);
+
+    // Présentation par affiches : image locale existante, sans créer ni modifier de fichier image.
+    const tile = document.createElement('button');
+    tile.type = 'button'; tile.className = 'poster-tile';
+    tile.setAttribute('aria-label', `Ouvrir la fiche : ${film.title || 'Titre inconnu'}`);
+    const imageWrap = document.createElement('span'); imageWrap.className = 'poster-tile-image';
+    const src = imageSourceFor(film);
+    if (src) {
+      const img = document.createElement('img');
+      img.src = src; img.alt = `Affiche de ${film.title || 'ce titre'}`; img.loading = 'lazy';
+      img.onerror = () => { imageWrap.replaceChildren(); imageWrap.textContent = 'Affiche indisponible'; };
+      imageWrap.append(img);
+    } else {
+      imageWrap.textContent = 'Affiche à ajouter';
+    }
+    const tileTitle = document.createElement('span'); tileTitle.className = 'poster-tile-title'; tileTitle.textContent = film.title || 'Titre inconnu';
+    const tileFormat = document.createElement('span'); tileFormat.className = 'poster-tile-format'; tileFormat.textContent = supportsFor(film).join(' · ') || '—';
+    tile.append(imageWrap, tileTitle, tileFormat);
+    tile.addEventListener('click', () => openFilmFromCatalog(film));
+    posterBox.append(tile);
   });
-  $('pageInfo').textContent=`${visible.length} titre${visible.length===1?'':'s'} affiché${visible.length===1?'':'s'} sur ${list.length}`;
-  $('loadMoreButton').disabled=visibleCount>=list.length;
-  $('loadMoreButton').textContent=visibleCount>=list.length?'Fin du catalogue':'Charger les titres suivants';
+  $('pageInfo').textContent = `${visible.length} titre${visible.length === 1 ? '' : 's'} affiché${visible.length === 1 ? '' : 's'} sur ${list.length}`;
+  $('loadMoreButton').disabled = visibleCount >= list.length;
+  $('loadMoreButton').textContent = visibleCount >= list.length ? 'Fin du catalogue' : 'Charger les titres suivants';
 }
 function addClickableNames(id, value, type) {
   const box=$(id);box.replaceChildren();
@@ -247,10 +296,6 @@ async function init() {
     console.error(error);setStatus('Impossible de charger data/films.json. Vérifiez que les fichiers ont bien été ajoutés au dépôt GitHub.');$('catalogList').textContent='Le catalogue ne peut pas être chargé. Vérifiez le fichier data/films.json.';
   }
 }
-$('catalogButton').addEventListener('click',()=>{
-  if (window.location.hash.startsWith('#film=')) history.replaceState(null, '', window.location.pathname + window.location.search);
-  showView('catalog');
-});
 window.addEventListener('hashchange', () => {
   if (!window.location.hash.startsWith('#film=')) {
     currentFilm = null;
@@ -270,6 +315,16 @@ window.addEventListener('hashchange', () => {
   restoreFilmFromHash();
 });
 $('homeButton').addEventListener('click',()=>showView('home'));
+$('posterCatalogButton').addEventListener('click',()=>{
+  if (window.location.hash.startsWith('#film=')) history.replaceState(null, '', window.location.pathname + window.location.search);
+  catalogPresentation = 'posters';
+  showView('catalog');
+});
+$('catalogButton').addEventListener('click',()=>{
+  if (window.location.hash.startsWith('#film=')) history.replaceState(null, '', window.location.pathname + window.location.search);
+  catalogPresentation = 'list';
+  showView('catalog');
+});
 $('searchButton').addEventListener('click',()=>runSearch($('searchInput').value));
 $('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runSearch($('searchInput').value);});
 $('searchCriterion').addEventListener('change',updateSearchPlaceholder);
